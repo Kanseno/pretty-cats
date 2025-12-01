@@ -9,7 +9,11 @@ export class CatService {
   private http = inject(HttpClient);
 
   getRandomCat() {
-    return this.http.get(`${environment.catApiUrl}/images/search`);
+    return this.http.get(`${environment.catApiUrl}/images/search`, {
+      headers: {
+        'x-api-key': environment.catApiKey,
+      },
+    });
   }
 
 }

@@ -15,7 +15,6 @@ export class CatListPage {
   protected cat = signal<any | null>(null);
 
   constructor() {
-    console.log('CatListPage constructor', environment.catApiKey);
     this.catService.getRandomCat().pipe(take(1)).subscribe((cat) => {
       this.cat.set(cat);
     });
