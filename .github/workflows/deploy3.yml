@@ -1,4 +1,4 @@
-name: Security level 2
+name: Security level 3
 
 on:
   workflow_dispatch:  # Enables manual trigger from GitHub UI
@@ -6,6 +6,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: production
 
     steps:
       - name: Checkout code
