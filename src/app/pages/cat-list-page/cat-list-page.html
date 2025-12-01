@@ -1,0 +1,9 @@
+@let catUrl = cat()?.[0].url;
+
+<div class="cat-container">
+@if (catUrl) {
+  <img [src]="catUrl" alt="cat" width="600" height="600" />
+}
+<button class="random-cat-button" (click)="getRandomCat()">Get Random Cat</button>
+<pre>{{ cat() | json }}</pre>
+</div>
