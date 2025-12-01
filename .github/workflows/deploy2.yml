@@ -1,7 +1,11 @@
+  name: security level 2
+  
+  on:
+    workflow_dispatch:  # Enables manual trigger from GitHub UI
+
   jobs:
     build:
       runs-on: ubuntu-latest
-      environment: production
       env:
         CAT_API_KEY: ${{ secrets.CAT_API_KEY }}
 

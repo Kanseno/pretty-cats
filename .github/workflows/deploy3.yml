@@ -1,12 +1,14 @@
-  name: security level 1
+  name: security level 3
+  
   on:
     workflow_dispatch:  # Enables manual trigger from GitHub UI
-  
+
   jobs:
     build:
       runs-on: ubuntu-latest
+      environment: production
       env:
-        CAT_API_KEY: 'live_cEy65CixJhISv2XH0p0Qti1888NjbzGVKg6fZ2yPlE5GWyeDYgZ5SIDqEQt0UeBl'
+        CAT_API_KEY: ${{ secrets.CAT_API_KEY }}
 
       steps:
         - uses: actions/checkout@v4
