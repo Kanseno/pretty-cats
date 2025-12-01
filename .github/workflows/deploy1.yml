@@ -1,0 +1,28 @@
+  jobs:
+    build:
+      runs-on: ubuntu-latest
+      env:
+        CAT_API_KEY: 'live_cEy65CixJhISv2XH0p0Qti1888NjbzGVKg6fZ2yPlE5GWyeDYgZ5SIDqEQt0UeBl'
+
+      steps:
+        - uses: actions/checkout@v4
+
+        - name: Use Node
+          uses: actions/setup-node@v4
+          with:
+            node-version: 20
+
+        - name: Install deps
+          run: npm ci
+
+        - name: Inject env file with secret
+          run: |
+            cat > src/environments/environment.production.ts << 'EOF'
+            export const environment = {
+              production: true,
+              catApiKey: '${CAT_API_KEY}',
+            };
+            EOF
+
+        - name: Build Angular
+          run: npm run build -- --configuration=production

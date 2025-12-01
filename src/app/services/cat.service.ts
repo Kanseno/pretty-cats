@@ -11,5 +11,5 @@ export class CatService {
   getRandomCat() {
     return this.http.get(`${environment.catApiUrl}/images/search`);
   }
-  
+
 }
